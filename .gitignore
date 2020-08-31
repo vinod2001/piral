@@ -1,4 +1,4 @@
-my-app/dist/
-my-app/dist/nodemodules/
-my-pilet/dist/
-my-pilet/dist/nodemodules/
+dist
+node_modules
+.vscode
+.cache
