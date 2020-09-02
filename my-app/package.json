@@ -6,6 +6,8 @@
     "piral"
   ],
   "dependencies": {
+    "@amplitude/react-amplitude": "^1.0.0",
+    "amplitude-js": "^7.1.1",
     "piral": "^0.11.8",
     "piral-search": "^0.11.8",
     "piral-tracking": "^0.11.8"

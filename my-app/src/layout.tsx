@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { ComponentsState, ErrorComponentsState, Menu, Notifications, SwitchErrorInfo, MenuItemProps } from 'piral';
 import { Link } from 'react-router-dom';
+import amplitude from "amplitude-js";
+import {
+  AmplitudeProvider,
+  Amplitude,
+  LogOnMount
+} from "@amplitude/react-amplitude";
 
+const AMPLITUDE_KEY = "27033bfdedabcc4c0a1cdf6cb5a141bb_11";
 const MenuItem: React.FC<MenuItemProps> = ({ children }) => <li className="nav-item">{children}</li>;
 
 const defaultTiles = (
@@ -84,11 +91,19 @@ export const layout: Partial<ComponentsState> = {
   ),
   DashboardTile: ({ columns, rows, children }) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
   Layout: ({ children }) => (
-    <div>
-      <Notifications />
-      <Menu type="general" />
-      <div className="container">{children}</div>
-    </div>
+    <AmplitudeProvider
+        amplitudeInstance={amplitude.getInstance()}
+        apiKey={AMPLITUDE_KEY}
+      >
+      <Amplitude>
+        <div>
+          <Notifications />
+          <Menu type="general" />
+          <div className="container">{children}</div>
+          <LogOnMount eventType="start piral" />
+        </div>
+      </Amplitude>
+    </AmplitudeProvider>
   ),
   MenuContainer: ({ children }) => {
     const [collapsed, setCollapsed] = React.useState(true);
