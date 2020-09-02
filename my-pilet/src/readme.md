@@ -25,3 +25,7 @@ Client:(Apex components adding extra attribute)
 - download and upload time
   - Is it neccesary to make back end changes??
   - Limitations in UI to handle these
+----------------------------------
+
+Amplitude Dashboard
+https://analytics.amplitude.com/vinod/chart/new/c2o4d88
