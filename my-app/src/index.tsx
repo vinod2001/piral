@@ -5,6 +5,7 @@ import { layout, errors } from "./layout";
 import { createTrackingApi } from 'piral-tracking';
 import { resolve } from "url";
 import { any } from 'prop-types';
+import { amplitudeTrackingApi } from '@apex-shell/amplitudeTrackingApi';
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 const feedUrl = "https://feed.piral.cloud/api/v1/pilet/pilet_tutorial";
@@ -45,6 +46,12 @@ const { root } = renderInstance({
   }
 });
 console.clear();
+root.on('testEvent',ev => setTimeout(
+  ()=>{
+    return console.log('testEvent:',ev.message)},5000)
+  );
+
+root.on('track-event',ev=>  console.log('track:',ev));
 // console.log("eventtrack",root.registerExtension);
 //console.log("eventtrack",root.trackEvent);
 // console.log('extension:',root.trackEvent("my-pilet"));
