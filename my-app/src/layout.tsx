@@ -8,7 +8,7 @@ import {
   LogOnMount
 } from "@amplitude/react-amplitude";
 
-const AMPLITUDE_KEY = "27033bfdedabcc4c0a1cdf6cb5a141bb_11";
+const AMPLITUDE_KEY = "27033bfdedabcc4c0a1cdf6cb5a141bb";
 const MenuItem: React.FC<MenuItemProps> = ({ children }) => <li className="nav-item">{children}</li>;
 
 const defaultTiles = (
