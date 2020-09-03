@@ -1,34 +1,13 @@
 import "piral/polyfills";
-import { renderInstance, Extend, createInstance } from "piral";
+import { renderInstance } from "piral";
 import { layout, errors } from "./layout";
-// import { creatSearchApi } from "piral-search";
 import { createTrackingApi } from 'piral-tracking';
+import { logEvent, AMPLITUDE_EVENT_TYPES } from "./utils/amplitude";
 
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 const feedUrl = "https://feed.piral.cloud/api/v1/pilet/pilet_tutorial";
 
-declare module "piral-core/lib/types/custom" {
-  interface PiletCustomApi extends MyPiletApi {}
-}
-
-interface MyPiletApi {
-  foo(): string;
-}
-
-// const instance = createInstance({
-//   // important part
-//   extendApi: [createTrackingApi()],
-//   // ...
-// });
-// console.log("createInstance:",instance);
-// const createMyApi = (): Extend<MyPiletApi> => {
-//   return () => ({
-//     foo() {
-//       return "google!";
-//     }
-//   });
-// };
 
 const { root } = renderInstance({
   layout,
@@ -43,18 +22,8 @@ const { root } = renderInstance({
       });
   }
 });
-// console.clear();
-root.on('testEvent',ev => setTimeout(
-  ()=>{
-    return console.log('testEvent:',ev.message)},5000)
-  );
 
-root.on('track-event',ev=>  console.log('track:',ev));
-
-// console.log("eventtrack",root.registerExtension);
-//console.log("eventtrack",root.trackEvent);
-// console.log('extension:',root.trackEvent("my-pilet"));
-// setTimeout(() => {
-//   alert(root.foo());
-//  //root.registerSearchProvider;
-// }, 2000);
+root.on('track-event', (data) => {
+  console.log(data);
+  logEvent(AMPLITUDE_EVENT_TYPES.PAGE_VIEW, data);
+})
