@@ -32,36 +32,43 @@ let AllEvents:EventFormat ={
 }
 
 export function setup(app: PiletApi) {
-
-  app.showNotification("Hello from Piral!", {
-    autoClose: 2000
-  });
   app.registerMenu(() => (
     <a href="https://docs.piral.io" target="_blank">
       Documentation
     </a>
   ));
-  app.registerTile("first-tile", () => <Link to="/google">super</Link>, {
-    initialColumns: 2,
-    initialRows: 2
-  });
-  app.registerTile("second-tile", () => <Link to="/google">new title</Link>, {
-    initialColumns: 2,
-    initialRows: 2
-  });
-  app.registerTile("third-tile", () => <div><Link to="/wrapper">Wrapper</Link></div>, {
+
+  app.registerPage("/google", AppContainer);
+  // app.registerPage("/wrapper", DetailsWrapper);
+  function AppContainer() {
+    return <Page piral={app} />;
+  }
+
+  // app.showNotification("Hello from Piral!", {
+  //   autoClose: 2000
+  // });
+  
+  // app.registerTile("first-tile", () => <Link to="/google">super</Link>, {
+  //   initialColumns: 2,
+  //   initialRows: 2
+  // });
+  // app.registerTile("second-tile", () => <Link to="/google">new title</Link>, {
+  //   initialColumns: 2,
+  //   initialRows: 2
+  // });
+  // app.registerTile("third-tile", () => <div><Link to="/wrapper">Wrapper</Link></div>, {
     
-  })
-  app.registerTile(() => (
-    <button
-      onClick={e => {
-        sendEmit(e);
-        app.unregisterTile("first-tile");
-      }}
-    >
-      Remove first tile
-    </button>
-  ));
+  // })
+  // app.registerTile(() => (
+  //   <button
+  //     onClick={e => {
+  //       sendEmit(e);
+  //       app.unregisterTile("first-tile");
+  //     }}
+  //   >
+  //     Remove first tile
+  //   </button>
+  // ));
 
   // const connect: any = app.createConnector(
   //   () =>
@@ -69,16 +76,14 @@ export function setup(app: PiletApi) {
   //       setTimeout(() => resolve([{ id: 5, title: "foo" }]), 1000)
   //     )
   // );
-  const apiUrl = "https://jsonplaceholder.typicode.com/posts";
-  const connect: any = app.createConnector(() =>
-    fetch(apiUrl).then(res => res.json())
-  );
+ 
   // function test(){
   //   console.log("testing");
   // }
   //test()
-  app.registerPage("/google", connect(Page));
-  app.registerPage("/wrapper", DetailsWrapper);
+  // app.registerPage("/google", connect(Page));
+  // app.registerPage("/google", AppContainer);
+  // app.registerPage("/wrapper", DetailsWrapper);
 
   const properties = {
     hello: "test"

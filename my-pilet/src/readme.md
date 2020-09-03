@@ -13,7 +13,11 @@ Shell:(A seprate core module for apex-shell)
     - App version
     
 - Logos
-    - Environment ID / Tenenant names
+    - Environment ID / Tenant names
+
+- Users
+    - Active user
+
     
 
 Package:
@@ -44,3 +48,40 @@ Client:(Apex components adding extra attribute)
 
 Amplitude Dashboard
 https://analytics.amplitude.com/vinod/chart/new/c2o4d88
+
+
+----------------------------------
+
+{
+  "logoName": "companyName",
+  "user":{
+    "anonymousId/userId": "507f191e810c19729de860ea",
+    "userRole": "admin",
+  }
+  "app":{
+      "name":"itp",
+      "version":"1.2.3"
+      "environmentId":"q341234235643qew542345"
+  },
+  "locale": "en-US",
+  "context": {
+    "page": {
+      "title": "page title",
+      "url": "page url",
+      "loadTime": "2sec" 
+    },
+    "event":{
+      "type":"submit/button/checkbox/radio etc.."
+      "name":"value of event property"
+      "time":{
+          "uploadEvent": "12sec",
+          "downloadEvent": "20sec"
+      }
+    }
+  },
+  <!-- "integrations": {
+    "All": true,
+    "Mixpanel": false,
+    "Salesforce": false
+  } -->
+}
