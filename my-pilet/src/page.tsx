@@ -5,15 +5,15 @@ type Props = {
     
 };
 export default ({piral}) => {
-    const ac = new AbortController();
+    // const ac = new AbortController();
     const [data, setData] = React.useState([]);
     // console.log("newPage:",data);
 
     const apiUrl = "https://jsonplaceholder.typicode.com/posts";
     React.useEffect(()=>{
         fetch(apiUrl).then(res => res.json()).then(data => {setData(data)}).catch(error=>error.data);
-        return () => ac.abort();
-    })
+       // return () => ac.abort();
+    },[])
     // const connect: any = app.createConnector(() =>
       
     // );
