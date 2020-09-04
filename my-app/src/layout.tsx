@@ -100,7 +100,7 @@ export const layout: Partial<ComponentsState> = {
           <Notifications />
           <Menu type="general" />
           <div className="container">{children}</div>
-          <LogOnMount eventType="start piral" />
+          {/* {<LogOnMount eventType="start piral" />} */}
         </div>
       </Amplitude>
     </AmplitudeProvider>

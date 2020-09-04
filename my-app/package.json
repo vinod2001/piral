@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "1.0.3",
+  "version": "1.1.14",
   "description": "",
   "keywords": [
     "piral"
@@ -10,7 +10,8 @@
     "amplitude-js": "^7.1.1",
     "piral": "^0.11.8",
     "piral-search": "^0.11.8",
-    "piral-tracking": "^0.11.8"
+    "piral-tracking": "^0.11.8",
+    "sha256": "^0.2.0"
   },
   "scripts": {
     "start": "piral debug",

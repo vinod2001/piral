@@ -17,13 +17,19 @@ export default ({piral}) => {
     // const connect: any = app.createConnector(() =>
       
     // );
+    const page= {
+        "title": document.title,
+        "url": window.location.origin,
+        "loadTime": "2sec" 
+      }
 
     return (
         <div>
             
             <h1>My Page</h1>
             <p>This some example test....</p>
-            <button onClick={(e)=>piral.trackEvent({pageUrl:window.location.origin})}>Page1</button>
+            <button onClick={(e)=>{piral.trackEvent({page}),alert(e)}}>Page1</button>
+            <button onClick={(e)=>piral.trigerEvent(piral.AMPLITUDE_EVENT_TYPES.EVENT_TYPE,e)}>Page2</button>
             <ul>
                 {data.map(res=> (
                     <li key={res.id}>{res.title}</li>
